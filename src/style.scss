@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Revalia|Roboto');
 
 $base-color: rgb(0, 0, 77);
-
+$high-light-color: rgb(255, 255, 153);
+$hover-color: rgb(0, 128, 128);
 
 *{
   font-family: 'Roboto', sans-serif;
@@ -25,7 +26,7 @@ body{
 
 button{
   background-color: $base-color;
-  color: rgb(255, 255, 153);
+  color: $high-light-color;
   border: none;
   height: 30px;
   width: 100px;
@@ -45,18 +46,18 @@ button{
 }
 
 button:hover{
-  background-color: rgb(0, 128, 128);
-  color:rgb(255, 255, 153);
+  background-color: $hover-color;
+  color:$high-light-color;
 }
 
 navbar-item:hover{
-  background-color: rgb(0, 128, 128);
-  color:rgb(255, 255, 153);
+  background-color: $hover-color;
+  color:$high-light-color;
 }
 
 button:active{
   background-color: $base-color;
-  color:rgb(255, 255, 153);
+  color:$high-light-color;
 }
 
 button:focus{
@@ -100,6 +101,10 @@ button:focus{
 
   .form-title{
     text-align: center;
+  }
+
+  button {
+    width: 100%;
   }
 }
 
@@ -183,14 +188,13 @@ input:active {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  // padding: 5px;
   background-color: rgba(0,0,0,0.6);
 }
 
 .home-rec-event{
   padding: 10px;
   margin: 5px 0;
-  color: rgb(255, 255, 153);
+  color: $high-light-color;
   font-weight: bold;
   width: 32%;
   text-align: center;
@@ -219,9 +223,13 @@ input:active {
 }
 
 .logo{
-  color: rgb(255, 255, 153);
+  color: $high-light-color;
   padding: 0.5rem 0.75rem;
   font-family: 'Revalia', cursive;
+}
+
+.logo:hover {
+  color: $hover-color;
 }
 
 .search-box{
@@ -236,6 +244,14 @@ input:active {
 
 .navbar-item{
   color: white;
+}
+
+.navbar-burger {
+  color: $high-light-color;
+}
+
+.navbar-burger:hover {
+  color: $hover-color;
 }
 
 .index-card{
@@ -269,7 +285,7 @@ input:active {
 }
 
 .flash-message{
-  background-color:rgb(255, 255, 153);
+  background-color:$high-light-color;
   color: $base-color;
   text-align: center;
   font-size: 30px;
@@ -281,6 +297,9 @@ input:active {
   max-height: 70%;
 }
 
+.box{
+  border-radius: 0px;
+}
 .event-meta{
   display: flex;
 }
@@ -317,6 +336,10 @@ input:active {
   height: 70%;
   margin: 0 10px;
   width: 300px;
+}
+
+a.navbar-item.is-active {
+  color: $base-color;
 }
 
 
@@ -372,7 +395,6 @@ input:active {
 
 .field{
   align-items: center;
-  padding-right: 10px;
 }
 .cards-slider {
   position:relative;

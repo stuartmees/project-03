@@ -31,12 +31,14 @@ class Navbar extends React.Component{
       <nav className="navbar">
         <div className="navbar-brand">
           <Link to="/" className="logo is-size-4">EvUp</Link>
+
           <a role="button"
             className={`navbar-burger${this.state.active ? ' is-active' : ''}`} onClick={this.toggleActive}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
+
         </div>
 
         <div className={`navbar-menu${this.state.active ? ' is-active' : ''}`}>
@@ -47,10 +49,14 @@ class Navbar extends React.Component{
           </div>
 
           <div className="navbar-end">
-            {!Auth.isAuthenticated() && <Link to="/register" className="navbar-item">Register</Link>}
-            {!Auth.isAuthenticated() && <Link to="/login" className="navbar-item">Login</Link>}
-            {Auth.isAuthenticated() && <a className="navbar-item" onClick={this.logout}><strong>Logout</strong></a>}
-            {Auth.isAuthenticated() && <Link to="/myprofile" className={'navbar-item'}>Profile</Link>}
+            {!Auth.isAuthenticated() && <Link to="/register" className={`navbar-item ${this.state.active ? ' is-active' : ''} `}>Register</Link>}
+
+            {!Auth.isAuthenticated() && <Link to="/login" className={`navbar-item ${this.state.active ? ' is-active' : ''} `}>Login</Link>}
+
+            {Auth.isAuthenticated() && <Link to="/myprofile" className={`navbar-item ${this.state.active ? ' is-active' : ''} `}>Profile</Link>}
+
+            {Auth.isAuthenticated() && <a className={`navbar-item ${this.state.active ? ' is-active' : ''} `} onClick={this.logout}>Logout</a>}
+
             {this.props.location.pathname!=='/' &&
               <SearchBar />
             }

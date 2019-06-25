@@ -168,9 +168,8 @@ class Show extends React.Component {
                 </div>
               }
             </div>
-            <div>
-            </div>
           </div>
+
           <div>
             {Auth.isAuthenticated() &&
           <form className="level is-half search-bar" onSubmit={this.handleSubmit}>
@@ -189,7 +188,7 @@ class Show extends React.Component {
           <div className="section">
 
             {this.state.data.comments.map(comment =>
-              <div key={comment._id} className="columns is-mulitiline box-shadow index-card  box">
+              <div key={comment._id} className="columns box-shadow box">
 
                 <div className="column profile-left is-one-quarter  ">
                   <figure className="image is-96x96 box ">
