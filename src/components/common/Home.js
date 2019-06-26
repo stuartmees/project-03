@@ -70,14 +70,12 @@ class Home extends React.Component{
       <main className="home-main">
         <div className="home-main-overlay">
 
-          <div className="columns ">
-            <div className="column is-half">
+          <div className="columns is-desktop">
+            <div className="column is-half-desktop">
               <h1 className="logo">EventUp</h1>
               <p className="subtitle is-5">Connecting you with music in your area.  </p>
             </div>
-            <div className="column is-half">
-
-
+            <div className="column is-half-desktop">
               <SearchBar />
             </div>
           </div>

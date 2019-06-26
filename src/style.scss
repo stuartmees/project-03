@@ -64,6 +64,12 @@ button:focus{
   outline: 0;
 }
 
+@media only screen and (min-width: 1216px){
+  .home-main-overlay>.columns>.column>h1 {
+    font-size: 100px;
+  }
+}
+
 @media only screen and (min-width: 1024px){
   .event-form{
     width: 80%;
@@ -145,7 +151,7 @@ input:active {
   background-image:url('images/hero-0.jpg');
   background-position: center;
   background-size: cover;
-  position: relative;
+  position: static;
   top:-52px;
 }
 
@@ -173,7 +179,7 @@ input:active {
 .home-main-overlay>.columns>.column>h1{
   color: $base-color;
   font-family: 'Revalia', cursive;
-  font-size: 100px;
+  font-size: 90px;
 }
 
 .home-main-overlay>.columns>.column>form{
@@ -328,6 +334,10 @@ input:active {
   width: 40px;
 }
 
+.navbar-menu {
+  padding: 0;
+}
+
 .navbar-end>.search-bar>button{
   display: none;
 }
@@ -339,8 +349,15 @@ input:active {
 }
 
 a.navbar-item.is-active {
-  color: $base-color;
+  color: white;
+  background-color: $base-color;
 }
+
+a.navbar-item.is-active:hover {
+  color: $hover-color;
+}
+
+
 
 
 .profile-left{
