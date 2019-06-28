@@ -284,7 +284,11 @@ This is how to click  the left and right arrows of the slider.
 ```  
 
 
+## Reflections
 
+We decided to work on the functionality of the app primarily at the outset and ignored styling. We tried to apply styling all in one go towards the end, which was very difficult as we did not have the classes and ids fresh in our memories. This made the task very time consuming.
+
+On top of this we did not come to an over riding agreement at the outset on what the app should look like in terms of fonts, colours and over all feel. This led to conflicting additions to style and inconsistency across the whole app. As part of a bigger picture it emphasised the need to have a plan and vision agreed by the whole team at the outset. 
 
 
 ## Future features
