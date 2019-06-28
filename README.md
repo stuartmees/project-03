@@ -33,7 +33,6 @@ The front end also pulls in information about venues and events from external AP
 
 
 ## Process
-_Describe the process of building the game. How did you get started? How did you manage your time? How would you do things next time?_
 
 Working in a team of three presented the possibility of merge conflicts. Work was allocated is a way to avoid code conflicts, as far as possible, on merge and each developer worked on feature branches which we merged in to development. The GitHub repository owner pushed clean code from development, to master and then to Heroku.
 
@@ -89,18 +88,9 @@ The VenueShow component:
 The venue information is shown in the VenueShow component which draws its information from from the external SongKick API. This component also displays upcoming events at that venue drawn from the same Songkick API.
 
 
-### Challenges and wins
-_Describe the biggest challenges.
-  How did you overcome them?
-  Did you decide to pivot because of time constraints?
-  What did you learn from these problems?_
+## Challenges and wins
 
-_Describe the wins.
-  What are you most proud of?
-  What did this project help you to understand the most?_
-
-
-#### The Home and SearchBar components
+### The Home and SearchBar Components
 <br>
   <img width="1419" alt="Screenshot 2019-05-25 at 16 36 38" src="https://user-images.githubusercontent.com/35113861/58371685-54778e80-7f0b-11e9-8b5e-126fd737396b.png">
 <br>
@@ -164,7 +154,7 @@ _Describe the wins.
       })
   }
   ```
-  #### The EventsNew component
+  ### The EventsNew Component
 
   The biggest challenges we encountered were in the EventNew component where user could upload new event information:
 
@@ -217,7 +207,7 @@ _Describe the wins.
   ```
 
 
-#### The upcoming events slider in VenueShow component
+### The Upcoming Events Slider in VenueShow Component
 <br>
 It was a challenge to find the right slider for React.js. We searched for React.js sliders but we could not find an appropriate one. We decided to make our own slider.
 
@@ -283,16 +273,15 @@ This is how to click  the left and right arrows of the slider.
 
 ```  
 
-
 ## Reflections
 
 We decided to work on the functionality of the app primarily at the outset and ignored styling. We tried to apply styling all in one go towards the end, which was very difficult as we did not have the classes and ids fresh in our memories. This made the task very time consuming.
 
-On top of this we did not come to an over riding agreement at the outset on what the app should look like in terms of fonts, colours and over all feel. This led to conflicting additions to style and inconsistency across the whole app. As part of a bigger picture it emphasised the need to have a plan and vision agreed by the whole team at the outset. 
+On top of this we did not come to an over riding agreement at the outset on what the app should look like in terms of fonts, colours and over all feel. This led to conflicting additions to style and inconsistency across the whole app. As part of a bigger picture it emphasised the need to have a plan and vision agreed by the whole team at the outset.
 
-
-## Future features
+## Future Features
 
 * Currently the SearchBar only filter for a match in the even title. Ideally this should search the event venue and description as well and would be something to add in the future.
+
 * We would like to enable users to message each other.
-  * For users to message each other then they would need to sign up. This leads to the requirement of two different types of users, and thus models in the database: event organisers and regular users.
+  * For users to message each other they would need to sign up. This leads to the requirement of two different types of users, and thus models in the database: event organisers and regular users.
