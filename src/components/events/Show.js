@@ -5,9 +5,8 @@ import Auth from '../../lib/Auth'
 
 import mapboxgl from 'mapbox-gl'
 
-
-
 mapboxgl.accessToken = process.env.MAPBOX
+
 class Show extends React.Component {
   constructor() {
     super()
@@ -15,8 +14,8 @@ class Show extends React.Component {
     this.state = {
       data: null,
       comment: {
-        content: ''
-      },
+                content: ''
+              },
       user: {}
 
     }
@@ -31,37 +30,36 @@ class Show extends React.Component {
 
   getMap(data){
 
-    // SORT IT AAAAAAAAT
-
-    console.log(data,this.state.data,'messi')
-
     axios.get(`https://api.songkick.com/api/3.0/venues/${data.skId}.json?&apikey=${process.env.SONG_KICK_KEY}`)
-      .then(res => this.setState({ data: data,
-        lat: res.data.resultsPage.results.venue.lat,
-        long: res.data.resultsPage.results.venue.lng
-
-      }))
+      .then(res =>  {
+        this.setState({ 
+          data: data,
+          lat: res.data.resultsPage.results.venue.lat,
+          long: res.data.resultsPage.results.venue.lng
+        })
+      })
       .then(this.makeMap)
+      .catch((err) => console.log('in songkick req err: '+err))
   }
 
   handleChange({ target: { name, value } }){
-    this.setState({ comment: { [name]: value } })
+      this.setState({ comment: { [name]: value } })
   }
 
   handleSubmit(e){
-    e.preventDefault()
-    const token = Auth.getToken()
+      e.preventDefault()
+      const token = Auth.getToken()
 
-    axios.post(`/api/events/${this.state.data.id}/comments`, this.state.comment, {
-      headers: { 'Authorization': `Bearer ${token}` }
-    })
-      .then(res => this.setState({ data: { ...this.state.data, comments: res.data.comments }, comment: { content: '' } }))
-      .catch(err => console.error(err))
+      axios.post(`/api/events/${this.state.data.id}/comments`, this.state.comment, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+        .then(res => this.setState({ data: { ...this.state.data, comments: res.data.comments }, comment: { content: '' } }))
+        .catch(err => console.error(err))
   }
 
 
   makeMap(){
-    console.log(this)
+
     this.map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
@@ -75,14 +73,17 @@ class Show extends React.Component {
 
   componentDidMount() {
     const token = Auth.getToken()
+    console.log(token)
+
     axios.get('/api/myprofile',{
       headers: { 'Authorization': `Bearer ${token}` }
     })
+    .then(res =>this.setState({user: res.data}))
 
-      .then(res =>this.setState({user: res.data}))
     axios.get(`/api/events/${this.props.match.params.id}`)
-      .then(res => this.getMap(res.data))
+    .then(res => this.getMap(res.data))
   }
+
   handleDelete() {
     const token = Auth.getToken()
     axios.delete(`/api/events/${this.props.match.params.id}`, {
@@ -92,17 +93,12 @@ class Show extends React.Component {
   }
 
   canModify() {
-    console.log('I am running')
-
-    console.log(this.state)
-    // if the user is logged in AND the user's id matches the characters' user's id return true
     return Auth.isAuthenticated() && Auth.getPayload().sub === this.state.data.createdBy._id
   }
 
   render () {
 
-    if(!this.state.data) return null
-    console.log(this.state,'eeee')
+    if(!this.state.data) return <div>Sorry! We cannot fetch the data for you at the moment!</div>
 
     return (
       <div className="section">
