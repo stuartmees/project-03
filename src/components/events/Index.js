@@ -18,6 +18,7 @@ class EventsIndex extends React.Component{
 
   getMatches(){
     const re = new RegExp(this.props.match.query.search, 'i')
+
     return this.state.events.filter(event => re.test(event.name))
   }
 
@@ -28,6 +29,7 @@ class EventsIndex extends React.Component{
 
   render(){
     this.props.match.query = qs.parse(this.props.location.search)
+    
     return(
       <section className="section">
         <div className="title">Events</div>

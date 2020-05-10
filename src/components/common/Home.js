@@ -17,7 +17,7 @@ class Home extends React.Component{
   }
 
   getMetroEvents(){
-    console.log('getMetroEvents')
+
     axios.get('https://api.songkick.com/api/3.0/search/locations.json', {
       params: {
         location: `geo:${this.state.location.lat},${this.state.location.lon}`,
@@ -25,7 +25,6 @@ class Home extends React.Component{
       }
     })
       .then(res => {
-
         const [{ metroArea }] = res.data.resultsPage.results.location
 
         return axios.get(`https://api.songkick.com/api/3.0/metro_areas/${metroArea.id}/calendar.json`, {
@@ -34,7 +33,6 @@ class Home extends React.Component{
             per_page: 30
           }
         })
-
       })
       .then(res => {
         const { event } = res.data.resultsPage.results
@@ -56,25 +54,22 @@ class Home extends React.Component{
 
 
   getLocation(){
-    console.log('getlocation')
-    console.group(navigator)
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log('beforesetstate')
+
       const { latitude, longitude } = position.coords
+
       this.setState({ 
         location: {
           lat: latitude,
           lon: longitude
         }
     })
-      // console.log('just before getMetro call')
-      // this.getMetroEvents();
+
     }, (err) => console.log(err));
   }
   
 
   componentDidMount() {
-    console.log('componentDidMount')
     this.getLocation()
   }
 

@@ -73,7 +73,6 @@ class Show extends React.Component {
 
   componentDidMount() {
     const token = Auth.getToken()
-    console.log(token)
 
     axios.get('/api/myprofile',{
       headers: { 'Authorization': `Bearer ${token}` }
@@ -86,6 +85,7 @@ class Show extends React.Component {
 
   handleDelete() {
     const token = Auth.getToken()
+    
     axios.delete(`/api/events/${this.props.match.params.id}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })

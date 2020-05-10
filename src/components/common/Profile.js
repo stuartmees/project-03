@@ -10,17 +10,17 @@ class Profile extends React.Component{
   constructor(){
     super()
     this.state={
-
       data: {}
     }
   }
 
   componentDidMount(){
     const token = Auth.getToken()
+
     axios.get('/api/myprofile',{
       headers: { 'Authorization': `Bearer ${token}` }
     })
-      .then(res =>this.setState({data: res.data}))
+      .then(res => this.setState({data: res.data}))
       .catch(err => console.error(err))
   }
 

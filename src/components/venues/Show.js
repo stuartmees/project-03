@@ -43,15 +43,17 @@ class VenuesShow extends React.Component{
 
   nextEvent(){
     index++
+
     eventsLength=this.state.upcoming.resultsPage.results.event.length
+
     this.setState({currentEvent: this.state.upcoming.resultsPage.results.event[index]})
-    console.log(this.state.currentEvent)
-    console.log(this.state)
   }
 
   previousEvent(){
     index--
+
     eventsLength=this.state.upcoming.resultsPage.results.event.length
+
     this.setState({currentEvent: this.state.upcoming.resultsPage.results.event[index]})
   }
 
@@ -62,14 +64,13 @@ class VenuesShow extends React.Component{
       center: [this.state.venue.resultsPage.results.venue.lng, this.state.venue.resultsPage.results.venue.lat], // starting position [lng, lat]
       zoom: 15 // starting zoom
     })
+
     const marker = new mapboxgl.Marker()
       .setLngLat([this.state.venue.resultsPage.results.venue.lng, this.state.venue.resultsPage.results.venue.lat])
       .addTo(this.map)
   }
 
   render(){
-
-    console.log(this)
 
     return(
       <section className="section">

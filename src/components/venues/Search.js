@@ -18,12 +18,15 @@ class VenuesSearch extends React.Component {
 
   handleChange(e){
     e.preventDefault()
+
     const data = e.target.value
+
     this.setState({ searchName: data })
   }
 
   handleSubmit(e) {
     e.preventDefault()
+
     axios.get('https://api.songkick.com/api/3.0/search/venues.json', {
       params: {
         query: this.state.searchName,
@@ -62,7 +65,6 @@ class VenuesSearch extends React.Component {
           <div className="zero-result container index-card">Sorry, we have no venues matching that name. Try another search!</div>
         }
 
-
         {this.state.venues &&
             <div className="search-results">
               <div className="is-5 is-multiline">
@@ -79,8 +81,6 @@ class VenuesSearch extends React.Component {
               </div>
             </div>
         }
-
-
       </div>
 
     )

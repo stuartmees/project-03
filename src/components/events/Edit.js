@@ -48,39 +48,26 @@ class Edit extends React.Component {
     this.handleSelectChange = this.handleSelectChange.bind(this)
     this.handleStartTime = this.handleStartTime.bind(this)
     this.handleFinishTime = this.handleFinishTime.bind(this)
-
-
   }
 
   componentDidMount(){
-    console.log(this.props.match.params.id)
-
     axios.get(`/api/events/${this.props.match.params.id}`)
       .then(res=> this.setState({data: res.data}) )
   }
+
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
 
     this.setState({ data })
-
   }
-
-
 
   handleSelectChange(e) {
-    console.log(e)
     const data = { ...this.state.data, artist: e }
-    console.log('hi there',data)
+
     this.setState({ data })
-    console.log(this)
   }
 
-
-
-
   handleChangeDate(date) {
-    console.log(date)
-
     this.setState({
       data: {
         ...this.state.data,
@@ -90,8 +77,6 @@ class Edit extends React.Component {
   }
 
   handleStartTime(date) {
-    console.log(date)
-
     this.setState({
       data: {
         ...this.state.data,
@@ -101,8 +86,6 @@ class Edit extends React.Component {
   }
 
   handleFinishTime(date) {
-    console.log(date)
-
     this.setState({
       data: {
         ...this.state.data,
@@ -110,10 +93,6 @@ class Edit extends React.Component {
       }
     })
   }
-
-
-
-
 
   selectVenue(venue){
 
@@ -123,18 +102,18 @@ class Edit extends React.Component {
     this.setState({ data })
   }
 
-  findVenue(e){
+  findVenue(e) {
     e.preventDefault()
-    if(this.state.data.skId ){
+
+    if( this.state.data.skId ){
       this.setState({
         data: {
           ...this.state.data,
           skId: ''
-
-
         }
       })
     }
+
     axios.get('https://api.songkick.com/api/3.0/search/venues.json', {
       params: {
         query: this.state.data.venue,
@@ -142,23 +121,23 @@ class Edit extends React.Component {
       }
     })
       .then(res => this.setState({ venues: res.data.resultsPage.results.venue }))
-
   }
 
   handleSubmit(e) {
     e.preventDefault()
+
     const token = Auth.getToken()
+
     axios.put(`/api/events/${this.state.data.id}`, this.state.data, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res  => this.props.history.push(`/events/${res.data._id}`))
       .catch(err => this.setState({ errors: err.response.data.errors }))
-
   }
 
 
   render() {
-    console.log(this.state.data,'hi there mate')
+
     return (
       <section className="section">
         <div className="title">Enter Event Details</div>

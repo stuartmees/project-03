@@ -49,7 +49,7 @@ class EventsNew extends React.Component {
 
   handleChange(e) {
     const data = { ...this.state.data, [e.target.name]: e.target.value }
-    console.log(data)
+
     this.setState({ data })
   }
 
@@ -59,7 +59,6 @@ class EventsNew extends React.Component {
   }
 
   handleChangeDate(date) {
-    console.log(date)
     this.setState({
       data: {
         ...this.state.data,
@@ -69,8 +68,6 @@ class EventsNew extends React.Component {
   }
 
   handleStartTime(date) {
-    console.log(date)
-
     this.setState({
       data: {
         ...this.state.data,
@@ -80,8 +77,6 @@ class EventsNew extends React.Component {
   }
 
   handleFinishTime(date) {
-    console.log(date)
-
     this.setState({
       data: {
         ...this.state.data,
@@ -90,12 +85,7 @@ class EventsNew extends React.Component {
     })
   }
 
-
-
-
-
   selectVenue(venue){
-
     const { displayName: name, zip: postcode, id: skId } = venue
     const data = { ...this.state.data, venue: name, postcode, skId }
 
@@ -110,8 +100,6 @@ class EventsNew extends React.Component {
         data: {
           ...this.state.data,
           skId: ''
-
-
         }
       })
     }
@@ -123,7 +111,6 @@ class EventsNew extends React.Component {
       }
     })
       .then(res => this.setState({ venues: res.data.resultsPage.results.venue }))
-
   }
 
   handleSubmit(e) {
@@ -138,7 +125,7 @@ class EventsNew extends React.Component {
   }
 
   render() {
-    console.log(this.state.data)
+
     return (
       <section className="section">
         <div className="title">Enter Event Details</div>
